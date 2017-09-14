@@ -48,17 +48,18 @@ import java.io.*;
 import java.util.*;
 
 public class Solution {
-
-    public static void main(String[] args) {
-        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
-        Scanner scan = new Scanner(System.in); 
-        
-        int n = scan.nextInt();
-        scan.nextLine();
-        
+    
+    public static void splitString (int n, Scanner scan) {
         for (int i = 0; i < n; i++) {
             String str = scan.nextLine();
             String[] splitStr = str.split("");
+            
+            String finalString = determineOddOrEven(splitStr);
+            System.out.println(finalString);  
+        }
+    }
+    
+    public static String determineOddOrEven (String[] splitStr) {
             String even = "";
             String odd = "";
             
@@ -70,7 +71,17 @@ public class Solution {
                     odd += splitStr[j]; 
                 }
             }
-            System.out.println(even + " " + odd);
-        }
+            return (even + " " + odd);
+    }
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan = new Scanner(System.in); 
+        
+        int n = scan.nextInt();
+        scan.nextLine();
+        
+        splitString(n, scan);
+        
     }
 }
