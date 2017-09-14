@@ -61,15 +61,40 @@
       height:6px;
       background:black;
       position: absolute;
-      top:50%;
-      transform-origin: 100%;
+      top: 50%;
+      transform-origin: 100%; /* puts pivot on rhs */
       transform: rotate(90deg);
+      transition: all 0.05s;
+      transition-timing-function: cubic-bezier(0.04, 3.65, 0.58, 1);
     }
 
   </style>
 
   <script>
 
+  const secondHand = document.querySelector('.second-hand');
+  const minsHand = document.querySelector('.min-hand');
+  const hoursHand = document.querySelector('.hour-hand');
+
+  function setDate() {
+    const now = new Date();
+
+    const seconds = now.getSeconds();
+    const secondsDegrees = ((seconds / 60) * 360) + 90;
+    secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+    const mins = now.getMinutes();
+    const minsDegrees = ((mins / 60) * 360) + 90;
+    minsHand.style.transform = `rotate(${minsDegrees}deg)`;
+
+    const hours = now.getHours();
+    const hoursDegrees = ((mins / 12) * 360) + 90;
+    hoursHand.style.transform = `rotate(${hoursDegrees}deg)`;
+
+    console.log(seconds);
+  }
+
+  setInterval(setDate, 1000);
 
   </script>
 </body>
