@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app> <!-- Declare angular app -->
+  <head>
+    <meta charset="UTF-8">
+    <title>AngularJS for everyone</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  </head>
+  <body ng-init="list = [{name:'scott', age : '20'}, {name:'ben', age : '44'}, {name:'ross', age : '31'}, {name: 'jesse', age: '22'}]"> <!-- init data when template is lodaded, normally use controller -->
+  <input type="text" ng-model="search">
+  	<ul>
+  		<li ng-repeat="item in list | filter:search">
+  			{{item.name}}
+  			{{item.age}}
+
+  		</li>
+  	</ul>
+
+  </body>
+</html>
