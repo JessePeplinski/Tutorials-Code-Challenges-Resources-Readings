@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="directoryApp"> <!-- Declare angular app -->
+  <head>
+    <meta charset="UTF-8">
+    <title>AngularJS for everyone</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="directory.js"></script>
+  </head>
+  <body ng-controller="directoryController"> <!-- init data when template is lodaded, normally use controller -->
+  <input type="text" ng-model="search">
+  	<ul>
+  		<li ng-repeat="item in list | filter:search">
+  			{{item.name}}
+  			{{item.age}}
+  		</li>
+  	</ul>
+  </body>
+</html>
