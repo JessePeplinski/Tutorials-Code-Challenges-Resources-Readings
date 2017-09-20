@@ -9,9 +9,12 @@
   <body ng-controller="directoryController as dirList"> <!-- init data when template is lodaded, normally use controller --> <!--  use the namespace in dirList -->
   <input type="text" ng-model="search">
   	<ul>
-  		<li ng-repeat="item in dirList.list | filter:search"> <!-- change to dirList.list so it can find it -->
-  			{{item.name}}
-  			{{item.age}}
+  		<li ng-repeat="item in dirList.list | filter:search 
+      | orderBy:'age'
+      | limitTo: 3 " 
+          class=" person-{{item.name | lowercase}}"> <!-- could apply style, but want it like this to apply class consistently. order matters for filters! -->
+  			{{item.name | uppercase}}
+  			{{item.age | currency:"&yen;":0}} <!-- another example of a filter -->
   		</li>
   	</ul>
     <form ng-submit="dirList.addPerson()"> <!-- function run when submitting form -->
