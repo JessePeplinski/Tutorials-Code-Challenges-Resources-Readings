@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="directoryApp"> <!-- Declare angular app -->
+  <head>
+    <meta charset="UTF-8">
+    <title>AngularJS for everyone</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="directory.js"></script>
+    <style>
+      .over-thirty {
+        background: red;
+        color: white;
+      }
+      .under-thirty {
+        background: blue;
+        color: white;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body ng-controller="directoryController as dirList"> <!-- init data when template is lodaded, normally use controller --> <!--  use the namespace in dirList -->
+  <input type="text" ng-model="search">
+  	<ul ng-class="{'hidden' : !dirList.toggle}"> <!-- if false, show hidden -->
+  		<li ng-repeat="item in dirList.list | filter:search"
+          
+          ng-class="item.age > 29 ? 'over-thirty' : 'under-thirty' "
+      > <!-- could apply style, but want it like this to apply class consistently. order matters for filters! you can also do this:  ng-class="{'over-thirty': item.age > 30, 'under-thirty' : item.age < 30}" -->
+  			{{item.name}}
+  			{{item.age}} <!-- another example of a filter -->
+  		</li>
+  	</ul>
+
+    <button ng-show="!dirList.toggle" ng-click="dirList.toggle = true">Show names</button>
+    <button ng-show="dirList.toggle" ng-click="dirList.toggle = false">Hide names</button>
+
+
+    <form ng-submit="dirList.addPerson()"> <!-- function run when submitting form -->
+      <input type="text" placeholder="Name" ng-model="dirList.name">
+      <input type="number" placeholder="Age" ng-model="dirList.age">
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
