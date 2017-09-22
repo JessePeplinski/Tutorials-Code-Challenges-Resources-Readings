@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="directoryApp">
+<!-- Declare angular app -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS for everyone</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="directory.js"></script>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        li {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        li span {
+            display: inline-block;
+            line-height: 50px;
+        }
+
+        li img {
+            margin-right: 10px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+
+        .over-thirty {
+            background: red;
+            color: white;
+        }
+
+        .under-thirty {
+            background: blue;
+            color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body ng-controller="directoryController as dirList">
+
+
+    <!-- init data when template is lodaded, normally use controller -->
+    <!--  use the namespace in dirList -->
+    <input type="text" ng-model="search">
+    <ul ng-class="{'hidden' : !dirList.toggle}">
+        <!-- if false, show hidden -->
+        <li ng-repeat="item in dirList.list | filter:search" ng-class="item.age > 29 ? 'over-thirty' : 'under-thirty' ">
+            <ng-include src="'person.html'"> <!-- need single quotes, looks for str --></ng-include>
+        </li>
+    </ul>
+
+
+    <button ng-show="!dirList.toggle" ng-click="dirList.toggle = true">Show names</button>
+    <button ng-show="dirList.toggle" ng-click="dirList.toggle = false">Hide names</button>
+    <form ng-submit="dirList.addPerson()">
+        <!-- function run when submitting form -->
+        <input type="text" placeholder="Name" ng-model="dirList.name">
+        <input type="number" placeholder="Age" ng-model="dirList.age">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
