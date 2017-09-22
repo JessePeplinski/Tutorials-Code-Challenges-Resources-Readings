@@ -42,6 +42,11 @@
         .hidden {
             display: none;
         }
+
+        /* We can style svgs with CSS! */
+        #twitter {
+            fill: yellow !important;
+        }
     </style>
 </head>
 
@@ -53,8 +58,9 @@
     <input type="text" ng-model="search">
     <ul ng-class="{'hidden' : !dirList.toggle}">
         <!-- if false, show hidden -->
-        <li ng-repeat="item in dirList.list | filter:search" ng-class="item.age > 29 ? 'over-thirty' : 'under-thirty' ">
-            <ng-include src="'person.html'"> <!-- need single quotes, looks for str --></ng-include>
+        <li ng-repeat="item in dirList.list | filter:search" ng-class="item.age > 29 ? 'over-thirty' : 'under-thirty' "
+            ng-include="'person.html'"> <!-- put this on the container itself. shouldn't have it as indiviual tag if possible -->
+            
         </li>
     </ul>
 
