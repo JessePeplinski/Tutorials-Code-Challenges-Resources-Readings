@@ -1,0 +1,17 @@
+{
+  "name": "15 - Adding Modules with Bower",
+  "homepage": "https://github.com/JessePeplinski/Tutorials-And-Code-Challenges",
+  "authors": [
+    "Jesse Peplinski <peplinski.jesse@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html ng-app="directoryApp">
+<!-- Declare angular app -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS for everyone</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-animate.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="directory.js"></script>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        li {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        li span {
+            display: inline-block;
+            line-height: 50px;
+        }
+
+        li img {
+            margin-right: 10px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+        }
+
+        .over-thirty {
+            background: red;
+            color: white;
+        }
+
+        .under-thirty {
+            background: blue;
+            color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* We can style svgs with CSS! */
+        #twitter {
+            fill: yellow !important;
+        }
+
+        /* The starting CSS styles for the enter animation */
+        li.ng-enter {
+            animation: fadeIn 0.2s linear;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        /* li.ng-enter.ng-enter-active {
+            opacity:1;
+            transform: translateY(0);
+        }
+
+        li.ng-leave {
+            transition:0.3s ease all;
+            opacity:1;
+            transform: translateY(0);
+        }
+
+        li.ng-leave.ng-leave-active {
+            opacity:0;
+            transform: translateY(10px);
+        } */
+
+    </style>
+</head>
+
+<body>
+    <main ui-view></main>  <!-- content in view added in here -->
+
+
+    <!-- init data when template is lodaded, normally use controller -->
+    <!--  use the namespace in dirList -->
+
+</body>
+
+</html>

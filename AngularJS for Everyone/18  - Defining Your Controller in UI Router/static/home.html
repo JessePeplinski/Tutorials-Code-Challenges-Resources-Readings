@@ -1,0 +1,19 @@
+<h1>Homepage</h1>
+<!-- removed the dirrectoryController as dirList, moved to directory.js in the home state. -->
+<input type="text" ng-model="search">
+<ul ng-if="dirList.toggle">
+    <!-- if false, show hidden -->
+    <li ng-repeat="item in dirList.list | filter:search" ng-class="item.age > 29 ? 'over-thirty' : 'under-thirty' " ng-include="'person.html'">
+        <!-- put this on the container itself. shouldn't have it as indiviual tag if possible -->
+    </li>
+</ul>
+
+
+<button ng-show="!dirList.toggle" ng-click="dirList.toggle = true">Show names</button>
+<button ng-show="dirList.toggle" ng-click="dirList.toggle = false">Hide names</button>
+<form ng-submit="dirList.addPerson()">
+    <!-- function run when submitting form -->
+    <input type="text" placeholder="Name" ng-model="dirList.name">
+    <input type="number" placeholder="Age" ng-model="dirList.age">
+    <input type="submit" value="Submit">
+</form>
