@@ -1,3 +1,1 @@
-# Tutorials-And-Code-Challenges
-
- A collection of various tutorials and challenges from CodeWars and HackerRank.
+ A collection of various tutorials, resources, readings, & challenges from CodeWars and HackerRank.
