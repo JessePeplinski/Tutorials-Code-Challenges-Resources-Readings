@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__) # Gives each file a unique name
 
@@ -15,13 +15,13 @@ stores = [
     }
 ]
 
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
 # POST - server is receiving data
 # GET - send data back only
-
-@app.route('/') # 'http://www.google.com/ - homepage
-def home():
-    return "Hello world!"
-
 
 # POST /store data: {name:} # create a new store 
 @app.route('/store', methods=['POST']) # by default, this is get
