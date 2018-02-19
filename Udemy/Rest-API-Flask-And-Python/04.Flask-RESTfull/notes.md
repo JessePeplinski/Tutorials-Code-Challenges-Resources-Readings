@@ -13,3 +13,10 @@ So, we want a clean installation using a virtual env.
 Now, everything will run with Python 3 as default! 
 
 `deactivate` will deactivate 
+
+
+# JWT
+
+encoding data as web token
+encrpyt with user ids
+client gets JWT, sends requests, tells us they have authenticated (loggin in)
