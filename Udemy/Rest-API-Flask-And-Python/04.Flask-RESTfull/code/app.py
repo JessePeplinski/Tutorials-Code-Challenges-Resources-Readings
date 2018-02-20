@@ -1,5 +1,5 @@
 from flask import Flask, request
-from flask_restful import Resource, Api
+from flask_restful import Resource, Api, reqparse
 from flask_jwt import JWT, jwt_required
 from security import authenticate, identity
 
@@ -13,6 +13,10 @@ items = []
 
 # inherits from resource
 class Item(Resource): 
+
+    parser = reqparse.RequestParser()
+    parser.add_argument('price', type=float, required=True, help="This field cannot be left blank") # Look into JSON payload
+     
     @jwt_required()
     def get(self, name):
         # iterate through all items and return the item
@@ -24,7 +28,8 @@ class Item(Resource):
         if next(filter(lambda x: x['name'] == name, items), None):
             return {'message': "An item with name '{}' already exists.".format(name)}, 400 # error checking for bad request
 
-        data = request.get_json(silent=True) # can pass force=True (dont need content type header) or silent=True (doesnt give error, returns none)
+        data = Item.parser.parse_args()
+
         item = {
             'name': name,
             'price': data['price']
@@ -38,8 +43,10 @@ class Item(Resource):
         return {'message': 'Item Deleted'}
     
     def put(self,name):
-        data = request.get_json()
+        data = Item.parser.parse_args()
+
         item = next(filter(lambda x: x['name'] == name, items), None) 
+
         if item is None:
             item = {'name': name, 'price': data['price']}
             items.append(item)
