@@ -1,6 +1,8 @@
 from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
+
+
 from security import authenticate, identity
 from user import UserRegister
 from item import Item, ItemList
@@ -15,5 +17,7 @@ api.add_resource(Item, '/item/<string:name>') # get at with localhost/student/<n
 api.add_resource(ItemList, '/items')
 api.add_resource(UserRegister, '/register')
 
-app.run(port=5000, debug=True)
+
+if __name__ == '__main__':
+    app.run(port=5000, debug=True)
     
