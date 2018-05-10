@@ -2,6 +2,8 @@
 
 Updating isn't always the best, breaks some depdendancies. We don't want projects to share libraries.
 
+
+# Virtual Envs
 So, we want a clean installation using a virtual env. 
 
 `pip 3 install virtualenv`
@@ -20,3 +22,6 @@ Now, everything will run with Python 3 as default!
 encoding data as web token
 encrpyt with user ids
 client gets JWT, sends requests, tells us they have authenticated (loggin in)
+
+# Section 6 
+- Resources are what the users see
